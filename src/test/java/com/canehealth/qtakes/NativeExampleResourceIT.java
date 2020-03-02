@@ -1,4 +1,4 @@
-package com.canehealth;
+package com.canehealth.qtakes;
 
 import io.quarkus.test.junit.NativeImageTest;
 

@@ -1,4 +1,4 @@
-package com.canehealth;
+package com.canehealth.qtakes;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

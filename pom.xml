@@ -17,6 +17,7 @@
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
     <quarkus.platform.version>1.2.1.Final</quarkus.platform.version>
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
+    <apache.ctakes.version>4.0.0</apache.ctakes.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -57,7 +58,21 @@
       <artifactId>quarkus-spring-boot-properties</artifactId>
     </dependency>
     <!-- cTakes dependencies from GitHub -->
-    
+    <dependency>
+      <groupId>org.apache.ctakes</groupId>
+      <artifactId>ctakes-core</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.ctakes</groupId>
+      <artifactId>ctakes-utils</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.ctakes</groupId>
+      <artifactId>ctakes-drug-ner</artifactId>
+      <version>4.0.0</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -120,19 +135,6 @@
       <properties>
         <quarkus.package.type>native</quarkus.package.type>
       </properties>
-      <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-        <repository>
-          <id>central</id>
-          <url>https://repo.maven.apache.org/maven2/</url>
-          <releases>
-             <enabled>true</enabled>
-          </releases>
-       </repository>
-        </repositories>
     </profile>
   </profiles>
 </project>
