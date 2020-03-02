@@ -21,6 +21,9 @@ addDescription adjuster.ChunkAdjuster NP,PP,NP 2
 // load pipers/TsDictionarySubPipe
 cli LookupXml=classes/META-INF/resources/customDictionary.xml
 // add DefaultJCasTermAnnotator LookupXml=org/apache/ctakes/dictionary/lookup/fast/customDictionary.xml
+// umls credentials
+cli umlsUser=user
+cli umlsPass=pass
 add DefaultJCasTermAnnotator LookupXml=classes/META-INF/resources/customDictionary.xml
 
 
