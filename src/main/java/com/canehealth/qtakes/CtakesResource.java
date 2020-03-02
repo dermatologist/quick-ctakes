@@ -1,10 +1,12 @@
 package com.canehealth.qtakes;
 
 import javax.annotation.PostConstruct;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,22 +21,27 @@ import org.apache.uima.util.JCasPool;
 
 @Path("/analyze")
 public class CtakesResource {
-    private static final String DEFAULT_PIPER_FILE_PATH = "pipers/Default.piper";
-    private static final String FULL_PIPER_FILE_PATH = "pipers/Full.piper";
+    private static final String DEFAULT_PIPER_FILE = "META-INF/resources/Default.piper";
     private static final String DEFAULT_PIPELINE = "Default";
-    private static final String FULL_PIPELINE = "Full";
     private static final Map<String, PipelineRunner> _pipelineRunners = new HashMap<>();
 
     @PostConstruct
     public void init() {
-        _pipelineRunners.put(DEFAULT_PIPELINE, new PipelineRunner(DEFAULT_PIPER_FILE_PATH));
-//        _pipelineRunners.put(FULL_PIPELINE, new PipelineRunner(FULL_PIPER_FILE_PATH));
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(DEFAULT_PIPER_FILE).getFile());
+        String absolutePath = file.getAbsolutePath();
+        _pipelineRunners.put(DEFAULT_PIPELINE, new PipelineRunner(absolutePath));
     }
 
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    public String analyze() {
-        return "{}";
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.TEXT_PLAIN)
+    public String analyze(String analysisText) {
+
+        String pipeline = DEFAULT_PIPELINE;
+        final PipelineRunner runner = _pipelineRunners.get(pipeline);
+        return runner.process(analysisText).toString();
+        //return analysisText;
     }
 
     static private Map<String, List<CuiResponse>> formatResults(JCas jcas) throws Exception {
