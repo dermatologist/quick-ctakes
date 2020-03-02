@@ -29,10 +29,10 @@ under the License.
                 Though JdbcConnectionFactory will attempt to "find" a db based upon the parent dir of the url
                 for the sake of ide ease-of-use, the user should be aware of these hsql limitations.
                 -->
-                <property key="jdbcDriver" value="com.mysql.jdbc.Driver"/>
-                <property key="jdbcUrl" value="jdbc:mysql://db:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
-                <property key="jdbcUser" value="root"/>
-                <property key="jdbcPass" value="pass"/>
+                <property key="jdbcDriver" value="org.hsqldb.jdbcDriver"/>
+                <property key="jdbcUrl" value="jdbc:hsqldb:file:/home/beapen/Documents/gitcola/quick-ctakes/target/classes/META-INF/resources/no_rx_16ab/sno_rx_16ab"/>
+                <property key="jdbcUser" value="sa"/>
+                <property key="jdbcPass" value=""/>
                 <property key="rareWordTable" value="cui_terms"/>
                 <property key="umlsUrl" value="https://uts-ws.nlm.nih.gov/restful/isValidUMLSUser"/>
                 <property key="umlsVendor" value="NLM-6515182895"/>
@@ -47,10 +47,10 @@ under the License.
             <name>sno_rx_16abConcepts</name>
             <implementationName>org.apache.ctakes.dictionary.lookup2.concept.UmlsJdbcConceptFactory</implementationName>
             <properties>
-                <property key="jdbcDriver" value="com.mysql.jdbc.Driver"/>
-                <property key="jdbcUrl" value="jdbc:mysql://db:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
-                <property key="jdbcUser" value="root"/>
-                <property key="jdbcPass" value="pass"/>
+                <property key="jdbcDriver" value="org.hsqldb.jdbcDriver"/>
+                <property key="jdbcUrl" value="jdbc:hsqldb:file:/home/beapen/Documents/gitcola/quick-ctakes/target/classes/META-INF/resources/no_rx_16ab/sno_rx_16ab"/>
+                <property key="jdbcUser" value="sa"/>
+                <property key="jdbcPass" value=""/>
                 <property key="umlsUrl" value="https://uts-ws.nlm.nih.gov/restful/isValidUMLSUser"/>
                 <property key="umlsVendor" value="NLM-6515182895"/>
                 <property key="umlsUser" value="CHANGEME"/>
