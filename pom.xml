@@ -56,6 +56,8 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-spring-boot-properties</artifactId>
     </dependency>
+    <!-- cTakes dependencies from GitHub -->
+    
   </dependencies>
   <build>
     <plugins>
@@ -118,6 +120,19 @@
       <properties>
         <quarkus.package.type>native</quarkus.package.type>
       </properties>
+      <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+          <id>central</id>
+          <url>https://repo.maven.apache.org/maven2/</url>
+          <releases>
+             <enabled>true</enabled>
+          </releases>
+       </repository>
+        </repositories>
     </profile>
   </profiles>
 </project>
