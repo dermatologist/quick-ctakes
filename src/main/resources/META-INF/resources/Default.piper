@@ -1,7 +1,7 @@
 // Commands and parameters to create a default plaintext document processing pipeline with UMLS lookup
 
 // set the thread count
-// threads 3
+// threads 1
 
 // Load a simple token processing pipeline from another pipeline file
 //load pipers/TsDefaultTokenizerPipeline
@@ -19,9 +19,9 @@ addDescription adjuster.ChunkAdjuster NP,PP,NP 2
 
 // Default fast dictionary lookup
 // load pipers/TsDictionarySubPipe
-// cli LookupXml=l
+cli LookupXml=/home/beapen/Documents/gitcola/quick-ctakes/target/classes/META-INF/resources/customDictionary.xml
 // add DefaultJCasTermAnnotator LookupXml=org/apache/ctakes/dictionary/lookup/fast/customDictionary.xml
-// add DefaultJCasTermAnnotator LookupXml=/home/beapen/Documents/gitcola/quick-ctakes/target/classes/META-INF/resources/customDictionary.xml
+add DefaultJCasTermAnnotator LookupXml=/home/beapen/Documents/gitcola/quick-ctakes/target/classes/META-INF/resources/customDictionary.xml
 
 // cli LookupXml=com/canehealth/qtakes/customDictionary.xml
 // add DefaultJCasTermAnnotator LookupXml=com/canehealth/qtakes/customDictionary.xml
