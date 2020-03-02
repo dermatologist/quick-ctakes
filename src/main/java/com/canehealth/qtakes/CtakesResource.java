@@ -7,6 +7,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.io.File;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,11 +39,17 @@ public class CtakesResource {
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.TEXT_PLAIN)
     public String analyze(String analysisText) {
-
-        String pipeline = DEFAULT_PIPELINE;
-        final PipelineRunner runner = _pipelineRunners.get(pipeline);
-        return runner.process(analysisText).toString();
-        //return analysisText;
+        try {
+            String pipeline = DEFAULT_PIPELINE;
+            final PipelineRunner runner = _pipelineRunners.get(pipeline);
+            return runner.process(analysisText).toString();
+        } catch (Exception e) {
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            System.out.println(sw.toString());
+            return analysisText;
+        }
     }
 
     static private Map<String, List<CuiResponse>> formatResults(JCas jcas) throws Exception {

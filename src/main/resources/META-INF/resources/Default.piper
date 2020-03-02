@@ -4,17 +4,30 @@
 // threads 3
 
 // Load a simple token processing pipeline from another pipeline file
-load pipers/TsDefaultTokenizerPipeline
+//load pipers/TsDefaultTokenizerPipeline
+add SimpleSegmentAnnotator
+add TokenizerAnnotatorPTB
 
 // Add non-core annotators
 add ContextDependentTokenizerAnnotator
 addDescription POSTagger
 
 // Add Chunkers
-load pipers/TsChunkerSubPipe
+// load pipers/TsChunkerSubPipe
+addDescription adjuster.ChunkAdjuster NP,NP 1
+addDescription adjuster.ChunkAdjuster NP,PP,NP 2
 
 // Default fast dictionary lookup
-load pipers/TsDictionarySubPipe
+// load pipers/TsDictionarySubPipe
+// cli LookupXml=l
+// add DefaultJCasTermAnnotator LookupXml=org/apache/ctakes/dictionary/lookup/fast/customDictionary.xml
+// add DefaultJCasTermAnnotator LookupXml=/home/beapen/Documents/gitcola/quick-ctakes/target/classes/META-INF/resources/customDictionary.xml
+
+// cli LookupXml=com/canehealth/qtakes/customDictionary.xml
+// add DefaultJCasTermAnnotator LookupXml=com/canehealth/qtakes/customDictionary.xml
+// add DefaultJCasTermAnnotator
+
+
 
 // Add Cleartk Entity Attribute annotators
-//load pipers/TsAttributeCleartkSubPipe
+// load pipers/TsAttributeCleartkSubPipe
