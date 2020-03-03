@@ -36,19 +36,17 @@ public class CtakesResource {
     }
 
     @POST
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.TEXT_PLAIN)
-    public String analyze(String analysisText) {
+    public Map<String, List<CuiResponse>> analyze(String analysisText) {
+        Map<String, List<CuiResponse>> pipelineResponse = new HashMap<>();
         try {
             String pipeline = DEFAULT_PIPELINE;
             final PipelineRunner runner = _pipelineRunners.get(pipeline);
-            return runner.process(analysisText).toString();
-        } catch (Exception e) {
-            StringWriter sw = new StringWriter();
-            PrintWriter pw = new PrintWriter(sw);
-            e.printStackTrace(pw);
-            System.out.println(sw.toString());
-            return analysisText;
+            pipelineResponse = runner.process(analysisText);
+            return pipelineResponse;
+        } catch (Exception ignored) {
+            return pipelineResponse;
         }
     }
 
