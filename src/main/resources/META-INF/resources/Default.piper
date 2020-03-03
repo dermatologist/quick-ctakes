@@ -1,11 +1,12 @@
 // Commands and parameters to create a default plaintext document processing pipeline with UMLS lookup
 
 // set the thread count
-threads 2
+threads 3
 
 // Load a simple token processing pipeline from another pipeline file
-//load pipers/TsDefaultTokenizerPipeline
+// load pipers/TsDefaultTokenizerPipeline
 add SimpleSegmentAnnotator
+add concurrent.ThreadSafeSentenceDetector
 add TokenizerAnnotatorPTB
 
 // Add non-core annotators
@@ -14,20 +15,21 @@ addDescription POSTagger
 
 // Add Chunkers
 // load pipers/TsChunkerSubPipe
+add concurrent.ThreadSafeChunker
 addDescription adjuster.ChunkAdjuster NP,NP 1
 addDescription adjuster.ChunkAdjuster NP,PP,NP 2
 
 // Default fast dictionary lookup
 // load pipers/TsDictionarySubPipe
-cli LookupXml=classes/META-INF/resources/customDictionary.xml
-// add DefaultJCasTermAnnotator LookupXml=org/apache/ctakes/dictionary/lookup/fast/customDictionary.xml
+//  Commands and parameters to create a default dictionary lookup sub-pipeline.  This is not a full pipeline.
+
+// path to the xml file containing information for dictionary lookup configuration.
+cli LookupXml=l
 // umls credentials
 cli umlsUser=user
 cli umlsPass=pass
-add DefaultJCasTermAnnotator LookupXml=classes/META-INF/resources/customDictionary.xml
 
-
-
-
+// Default fast dictionary lookup
+add concurrent.ThreadSafeFastLookup LookupXml=classes/META-INF/resources/customDictionary.xml
 // Add Cleartk Entity Attribute annotators
-// load pipers/TsAttributeCleartkSubPipe
+//load pipers/TsAttributeCleartkSubPipe

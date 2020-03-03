@@ -17,7 +17,7 @@
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
     <quarkus.platform.version>1.2.1.Final</quarkus.platform.version>
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
-    <apache.ctakes.version>4.0.0</apache.ctakes.version>
+    <apache.ctakes.version>4.0.1-SNAPSHOT</apache.ctakes.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -61,32 +61,32 @@
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-core</artifactId>
-      <version>4.0.0</version>
+      <version>4.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-utils</artifactId>
-      <version>4.0.0</version>
+      <version>4.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-drug-ner</artifactId>
-      <version>4.0.0</version>
+      <version>4.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-dictionary-lookup-fast</artifactId>
-      <version>4.0.0</version>
+      <version>4.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-dictionary-lookup-fast-res</artifactId>
-      <version>4.0.0</version>
+      <version>4.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-dictionary-lookup</artifactId>
-      <version>4.0.0</version>
+      <version>4.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.hsqldb</groupId>
