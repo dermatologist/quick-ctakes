@@ -6,9 +6,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
 import java.io.File;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +19,9 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.util.JCasPool;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 @Path("/analyze")
 public class CtakesResource {
@@ -36,17 +38,19 @@ public class CtakesResource {
     }
 
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.TEXT_PLAIN)
-    public Map<String, List<CuiResponse>> analyze(String analysisText) {
+    public String analyze(String analysisText) {
         Map<String, List<CuiResponse>> pipelineResponse = new HashMap<>();
         try {
             String pipeline = DEFAULT_PIPELINE;
             final PipelineRunner runner = _pipelineRunners.get(pipeline);
             pipelineResponse = runner.process(analysisText);
-            return pipelineResponse;
+            ObjectMapper objectMapper = new ObjectMapper();
+            String json = objectMapper.writeValueAsString(pipelineResponse);
+            return json;
         } catch (Exception ignored) {
-            return pipelineResponse;
+            return analysisText;
         }
     }
 
