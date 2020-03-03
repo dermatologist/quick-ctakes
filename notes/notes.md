@@ -13,3 +13,10 @@ git clone https://github.com/apache/ctakes.git
 cd ctakes && mvn compile -DskipTests && mvn install -pl '!ctakes-distribution'  -DskipTests
 
 ```
+
+## Deploy database
+
+```
+docker run -d -p 3356:3306 --name ctakes-mysql -e MYSQL_ROOT_PASSWORD=pass beapen/ctdict
+
+```
