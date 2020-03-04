@@ -1,4 +1,4 @@
-# quick-ctakes project
+# :rocket: quick-ctakes project (using Quarkus)
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
