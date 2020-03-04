@@ -57,11 +57,29 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-jdbc-mysql</artifactId>
     </dependency>
-    <dependency>
+    <!-- <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-spring-boot-properties</artifactId>
-    </dependency>
+    </dependency> -->
     <!-- cTakes dependencies from GitHub -->
+    <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+      <version>4.3.12.RELEASE</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+      <version>4.3.12.RELEASE</version>
+      <scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+      <version>4.3.12.RELEASE</version>
+      <scope>runtime</scope>
+		</dependency>
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-core</artifactId>
