@@ -1,6 +1,6 @@
 # :rocket: QTakes - Apache cTAKES™ on Quarkus
 
-Apache cTAKES™ is a natural language processing system for the extraction of information from electronic medical record clinical free-text. A web application providing REST API for cTAKES is available from the original repository. This is an extension of the REST API using Quarkus, (the Supersonic Subatomic Java Framework) designed for containers (docker).
+Apache cTAKES™ is a natural language processing system for the extraction of information from electronic medical record clinical free-text. A web application providing REST API for cTAKES is available from the [original repository](https://github.com/apache/ctakes). This is an extension of the REST API using Quarkus, (the Supersonic Subatomic Java Framework) designed for containers (docker).
 
 ## You need
 
