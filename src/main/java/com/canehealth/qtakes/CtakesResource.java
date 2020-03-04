@@ -7,7 +7,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,19 +28,55 @@ import org.apache.uima.util.JCasPool;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 @Path("/analyze")
 public class CtakesResource {
-    private static final String DEFAULT_PIPER_FILE = "META-INF/resources/Default.piper";
+    private static final String DEFAULT_PIPER_FILE = "/META-INF/resources/Default.piper";
+    private static final String DEFAULT_DICT_FILE = "/META-INF/resources/customDictionary.xml";
     private static final String DEFAULT_PIPELINE = "Default";
     private static final Map<String, PipelineRunner> _pipelineRunners = new HashMap<>();
 
     @PostConstruct
     public void init() {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource(DEFAULT_PIPER_FILE).getFile());
-        String absolutePath = file.getAbsolutePath();
-        _pipelineRunners.put(DEFAULT_PIPELINE, new PipelineRunner(absolutePath));
+        writeResources();
+        _pipelineRunners.put(DEFAULT_PIPELINE, new PipelineRunner("/tmp/Default.piper"));
+    }
+
+    private void writeResources() {
+        InputStream in = getClass().getResourceAsStream(DEFAULT_PIPER_FILE); 
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        try {
+            //piper = File.createTempFile("Default", ".piper");
+            File piper = new File("/tmp/Default.piper");
+            piper.delete();
+            piper.createNewFile();
+            BufferedWriter bw = new BufferedWriter(new FileWriter(piper));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                bw.write(line);
+                // must do this: .readLine() will have stripped line endings
+                bw.newLine();
+            }
+            bw.close();
+            reader.close();
+            in = getClass().getResourceAsStream(DEFAULT_DICT_FILE); 
+            reader = new BufferedReader(new InputStreamReader(in));
+            //File dictFile = File.createTempFile("customDictionary", ".xml");
+            File dictFile = new File("/tmp/customDictionary.xml");
+            dictFile.delete();
+            dictFile.createNewFile();
+            bw = new BufferedWriter(new FileWriter(dictFile));
+            while ((line = reader.readLine()) != null) {
+                bw.write(line);
+                // must do this: .readLine() will have stripped line endings
+                bw.newLine();
+            }
+            bw.close();
+            reader.close(); 
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+ 
     }
 
     @POST

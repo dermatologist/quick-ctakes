@@ -30,6 +30,6 @@ cli umlsUser=user
 cli umlsPass=pass
 
 // Default fast dictionary lookup
-add concurrent.ThreadSafeFastLookup LookupXml=classes/META-INF/resources/customDictionary.xml
+add concurrent.ThreadSafeFastLookup LookupXml=/tmp/customDictionary.xml
 // Add Cleartk Entity Attribute annotators
 //load pipers/TsAttributeCleartkSubPipe
