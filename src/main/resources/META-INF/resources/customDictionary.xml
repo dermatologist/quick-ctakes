@@ -48,7 +48,7 @@ under the License.
             <implementationName>org.apache.ctakes.dictionary.lookup2.concept.UmlsJdbcConceptFactory</implementationName>
             <properties>
                 <property key="jdbcDriver" value="com.mysql.cj.jdbc.Driver"/>
-                <property key="jdbcUrl" value="jdbc:mysql://127.0.0.1:3356/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
+                <property key="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
                 <property key="jdbcUser" value="root"/>
                 <property key="jdbcPass" value="pass"/>
                 <property key="umlsUrl" value="https://uts-ws.nlm.nih.gov/restful/isValidUMLSUser"/>
