@@ -50,10 +50,6 @@ See the docker folder for details
 A sample docker-compose is also provided.
 
 
-## Author
-
-[Bell Eapen](https://nuchange.ca)
-
 ## More about Quarkus
 
 
