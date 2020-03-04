@@ -17,6 +17,32 @@ cd ctakes && mvn compile -DskipTests && mvn install -pl '!ctakes-distribution'  
 ## Deploy database
 
 ```
-docker run -d -p 3356:3306 --name ctakes-mysql -e MYSQL_ROOT_PASSWORD=pass beapen/ctdict
+docker run -d -p 3306:3306 --name ctakes-mysql -e MYSQL_ROOT_PASSWORD=pass beapen/ctdict
+
+```
+
+## Run It
+
+```
+./mvnw clean compile quarkus:dev
+
+```
+
+## Package it
+
+```
+mvn clean package -DskipTests
+```
+
+## Build container
+
+```
+docker build -f src/main/docker/Dockerfile.jvm -t beapen/qtakes .
+```
+
+## Deploy docker-compose
+
+```
+docker-compose -f src/main/docker/docker-compose.yml up
 
 ```

@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: beapen/ctdict
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+
+  ctakes:
+    image: beapen/qtakes
+    restart: always
+    ports:
+      - 8093:8080
+    env_file:
+      - umls.env
+    depends_on: 
+      - db
