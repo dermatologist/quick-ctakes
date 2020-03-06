@@ -18,6 +18,7 @@
     <quarkus.platform.version>1.2.1.Final</quarkus.platform.version>
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
     <apache.ctakes.version>4.0.1-SNAPSHOT</apache.ctakes.version>
+    <spring.version>4.3.19.RELEASE</spring.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -65,50 +66,50 @@
     <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-      <version>4.3.19.RELEASE</version>
+      <version>${spring.version}</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-      <version>4.3.12.RELEASE</version>
+      <version>${spring.version}</version>
       <scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
-      <version>4.3.12.RELEASE</version>
+      <version>${spring.version}</version>
       <scope>runtime</scope>
 		</dependency>
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-core</artifactId>
-      <version>4.0.1-SNAPSHOT</version>
+      <version>${apache.ctakes.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-utils</artifactId>
-      <version>4.0.1-SNAPSHOT</version>
+      <version>${apache.ctakes.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-drug-ner</artifactId>
-      <version>4.0.1-SNAPSHOT</version>
+      <version>${apache.ctakes.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-dictionary-lookup-fast</artifactId>
-      <version>4.0.1-SNAPSHOT</version>
+      <version>${apache.ctakes.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-dictionary-lookup-fast-res</artifactId>
-      <version>4.0.1-SNAPSHOT</version>
+      <version>${apache.ctakes.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.ctakes</groupId>
       <artifactId>ctakes-dictionary-lookup</artifactId>
-      <version>4.0.1-SNAPSHOT</version>
+      <version>${apache.ctakes.version}</version>
     </dependency>
     <dependency>
       <groupId>org.hsqldb</groupId>
