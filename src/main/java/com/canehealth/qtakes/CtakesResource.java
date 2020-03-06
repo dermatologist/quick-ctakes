@@ -41,6 +41,12 @@ public class CtakesResource {
         _pipelineRunners.put(DEFAULT_PIPELINE, new PipelineRunner("/tmp/Default.piper"));
     }
 
+    /**
+     * The pipeline (Default.piper) file and the init method above
+     * require the full/relative path. Accessing the path inside the container
+     * is tricky. Hence the resources are written to the tmp folder and read
+     * from there.
+     */
     private void writeResources() {
         InputStream in = getClass().getResourceAsStream(DEFAULT_PIPER_FILE); 
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
