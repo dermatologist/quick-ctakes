@@ -1,5 +1,9 @@
 # :rocket: QTakes - Apache cTAKES™ on Quarkus
 
+![quick-ctakes](https://forthebadge.com/images/badges/made-with-java.svg)
+[![Twitter Follow](https://img.shields.io/twitter/follow/beapen?style=social)](https://twitter.com/beapen)
+
+
 Apache cTAKES™ is a natural language processing system for the extraction of information from electronic medical record clinical free-text. A web application providing REST API for cTAKES is available from the [original repository](https://github.com/apache/ctakes). This is an extension of the REST API using Quarkus, (the Supersonic Subatomic Java Framework) designed for containers (docker).
 
 ## You need
@@ -81,3 +85,4 @@ Or you can use Docker to build the native executable using: `./mvnw package -Pna
 You can then execute your binary: `./target/quick-ctakes-1.0.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/building-native-image-guide .
+
