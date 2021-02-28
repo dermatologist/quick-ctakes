@@ -37,7 +37,7 @@ The application has cTakes 4.0.1 as a dependency, which is currently not availab
 
 ```
 git clone https://github.com/apache/ctakes.git
-cd ctakes && mvn compile -DskipTests && mvn install -pl '!ctakes-distribution'  -DskipTests
+cd ctakes && mvn compile -pl '!ctakes-ytex-web' -DskipTests && mvn install -pl '!ctakes-distribution'  -DskipTests
 
 ```
 
