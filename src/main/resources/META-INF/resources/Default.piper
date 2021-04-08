@@ -26,8 +26,8 @@ addDescription adjuster.ChunkAdjuster NP,PP,NP 2
 // path to the xml file containing information for dictionary lookup configuration.
 cli LookupXml=l
 // umls credentials
-cli umlsUser=user
-cli umlsPass=pass
+// cli umlsUser=user
+// cli umlsPass=pass
 
 // Default fast dictionary lookup
 add concurrent.ThreadSafeFastLookup LookupXml=/tmp/customDictionary.xml

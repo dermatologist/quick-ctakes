@@ -34,10 +34,6 @@ under the License.
                 <property key="jdbcUser" value="root"/>
                 <property key="jdbcPass" value="pass"/>
                 <property key="rareWordTable" value="cui_terms"/>
-                <property key="umlsUrl" value="https://uts-ws.nlm.nih.gov/restful/isValidUMLSUser"/>
-                <property key="umlsVendor" value="NLM-6515182895"/>
-                <property key="umlsUser" value="CHANGEME"/>
-                <property key="umlsPass" value="CHANGEME"/>
             </properties>
         </dictionary>
     </dictionaries>
@@ -51,10 +47,6 @@ under the License.
                 <property key="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
                 <property key="jdbcUser" value="root"/>
                 <property key="jdbcPass" value="pass"/>
-                <property key="umlsUrl" value="https://uts-ws.nlm.nih.gov/restful/isValidUMLSUser"/>
-                <property key="umlsVendor" value="NLM-6515182895"/>
-                <property key="umlsUser" value="CHANGEME"/>
-                <property key="umlsPass" value="CHANGEME"/>
                 <property key="tuiTable" value="tui"/>
                 <property key="prefTermTable" value="prefTerm"/>
                 <!-- Optional tables for optional term info.
