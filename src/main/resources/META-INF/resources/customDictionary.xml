@@ -34,6 +34,10 @@ under the License.
                 <property key="jdbcUser" value="root"/>
                 <property key="jdbcPass" value="pass"/>
                 <property key="rareWordTable" value="cui_terms"/>
+                <property key="umlsUrl" value=""/>
+                <property key="umlsVendor" value=""/>
+                <property key="umlsUser" value=""/>
+                <property key="umlsPass" value=""/>
             </properties>
         </dictionary>
     </dictionaries>
@@ -49,6 +53,10 @@ under the License.
                 <property key="jdbcPass" value="pass"/>
                 <property key="tuiTable" value="tui"/>
                 <property key="prefTermTable" value="prefTerm"/>
+                <property key="umlsUrl" value=""/>
+                <property key="umlsVendor" value=""/>
+                <property key="umlsUser" value=""/>
+                <property key="umlsPass" value=""/>
                 <!-- Optional tables for optional term info.
                 Uncommenting these lines alone may not persist term information;
                 persistence depends upon the TermConsumer.  -->
