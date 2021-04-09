@@ -31,17 +31,8 @@ git clone https://github.com/dermatologist/quick-ctakes.git
 ```
 Add the database details in customDictionary.xml in the resources folder. Please note that you have to add them in two places. You can add your UMLS credentials also here. Make changes to the Default.piper if needed
 
-### STEP 3: Install cTakes 4.0.1-SNAPSHOT locally
 
-The application has cTakes 4.0.1 as a dependency, which is currently not available in maven central. Hence, you have to build and install it locally from the source as shown below.
-
-```
-git clone https://github.com/apache/ctakes.git
-cd ctakes && mvn compile -DskipTests && mvn install -pl '!ctakes-distribution'  -DskipTests
-
-```
-
-### STEP 4: Build the java application, test it and package it
+### STEP 3: Build the java application, test it and package it
 ```
 cd quick-ctakes
 ./mvnw clean compile quarkus:dev
