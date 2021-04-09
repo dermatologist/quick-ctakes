@@ -48,8 +48,9 @@ cd quick-ctakes
 mvn clean package -DskipTests
 
 ```
+### STEP 5: Set UmlsKey as described [here](https://cwiki.apache.org/confluence/display/CTAKES/cTAKES+4.0.0.1)
 
-### STEP 5: Dockarize it
+### STEP 6: Dockarize it
 See the docker folder for details
 A sample docker-compose is also provided.
 
