@@ -6,6 +6,7 @@
 
 Apache cTAKES™ is a natural language processing system for the extraction of information from electronic medical record clinical free-text. A web application providing REST API for cTAKES is available from the [original repository](https://github.com/apache/ctakes). This is an extension of the REST API using Quarkus, (the Supersonic Subatomic Java Framework) designed for containers (docker).
 
+**04/10/2021: Updated with cTakes patch 4.0.0.1 for UmlsKey**
 ## You need
 
 * docker
@@ -29,7 +30,7 @@ COPY ./sno_rx_16ab_db/ /docker-entrypoint-initdb.d/
 ```
 git clone https://github.com/dermatologist/quick-ctakes.git
 ```
-Add the database details in customDictionary.xml in the resources folder. Please note that you have to add them in two places. You can add your UMLS credentials also here. Make changes to the Default.piper if needed
+Add the database details in customDictionary.xml in the resources folder. Make changes to the Default.piper if needed
 
 
 ### STEP 3: Build the java application, test it and package it
@@ -39,12 +40,12 @@ cd quick-ctakes
 mvn clean package -DskipTests
 
 ```
-### STEP 5: Set UmlsKey as described [here](https://cwiki.apache.org/confluence/display/CTAKES/cTAKES+4.0.0.1)
-
-### STEP 6: Dockarize it
+### STEP 4: Dockarize it
 See the docker folder for details
-A sample docker-compose is also provided.
+A sample docker-compose is also provided. (**Add UMLS KEY HERE**)
 
+### STEP 5: Use as below
+curl -X POST -H "Content-Type: text/plain" --data "this is hypertension and diabetes" 127.0.0.1:8080/analyze
 
 ## More about Quarkus
 
