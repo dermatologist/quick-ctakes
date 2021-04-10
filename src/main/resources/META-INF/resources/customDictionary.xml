@@ -30,7 +30,8 @@ under the License.
                 for the sake of ide ease-of-use, the user should be aware of these hsql limitations.
                 -->
                 <property key="jdbcDriver" value="com.mysql.cj.jdbc.Driver"/>
-                <property key="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
+                <!-- CHANGE JDBC CONNECTION STRING -->
+                <property key="jdbcUrl" value="jdbc:mysql://db:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
                 <property key="jdbcUser" value="root"/>
                 <property key="jdbcPass" value="pass"/>
                 <property key="rareWordTable" value="cui_terms"/>
@@ -48,7 +49,8 @@ under the License.
             <implementationName>org.apache.ctakes.dictionary.lookup2.concept.UmlsJdbcConceptFactory</implementationName>
             <properties>
                 <property key="jdbcDriver" value="com.mysql.cj.jdbc.Driver"/>
-                <property key="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
+                <!-- CHANGE JDBC CONNECTION STRING -->
+                <property key="jdbcUrl" value="jdbc:mysql://db:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
                 <property key="jdbcUser" value="root"/>
                 <property key="jdbcPass" value="pass"/>
                 <property key="tuiTable" value="tui"/>
