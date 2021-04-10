@@ -1,35 +1,12 @@
-// Commands and parameters to create a default plaintext document processing pipeline with UMLS lookup
-
-// set the thread count
-threads 3
-
-// Load a simple token processing pipeline from another pipeline file
-// load pipers/TsDefaultTokenizerPipeline
+// https://github.com/GoTeamEpsilon/ctakes-rest-service/tree/master/ctakes-web-rest/src/main/resources/pipers
 add SimpleSegmentAnnotator
-add concurrent.ThreadSafeSentenceDetector
+add SentenceDetector
 add TokenizerAnnotatorPTB
-
-// Add non-core annotators
 add ContextDependentTokenizerAnnotator
 addDescription POSTagger
-
-// Add Chunkers
-// load pipers/TsChunkerSubPipe
-add concurrent.ThreadSafeChunker
+add Chunker
 addDescription adjuster.ChunkAdjuster NP,NP 1
 addDescription adjuster.ChunkAdjuster NP,PP,NP 2
-
-// Default fast dictionary lookup
-// load pipers/TsDictionarySubPipe
-//  Commands and parameters to create a default dictionary lookup sub-pipeline.  This is not a full pipeline.
-
-// path to the xml file containing information for dictionary lookup configuration.
-cli LookupXml=l
-// umls credentials
-cli umlsUser=user
-cli umlsPass=pass
-
-// Default fast dictionary lookup
-add concurrent.ThreadSafeFastLookup LookupXml=/tmp/customDictionary.xml
-// Add Cleartk Entity Attribute annotators
-//load pipers/TsAttributeCleartkSubPipe
+// https://github.com/apache/ctakes/blob/5f2a58afb5c9f6e8eec07dcab2c69bae08642e94/ctakes-web-rest/src/main/resources/pipers/DictionarySubPipe.piper
+cli LookupXml=/tmp/customDictionary.xml
+add DefaultJCasTermAnnotator LookupXml=/tmp/customDictionary.xml

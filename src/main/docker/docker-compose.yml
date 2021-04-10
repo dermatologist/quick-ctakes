@@ -4,16 +4,17 @@ services:
 
   db:
     image: beapen/ctdict
-    restart: always
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: pass
 
   ctakes:
     image: beapen/qtakes
-    restart: always
+    restart: unless-stopped
     ports:
       - 8093:8080
-    env_file:
-      - umls.env
-    depends_on: 
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      ctakes.umls_apikey: <MY-KEY-HERE>
+    depends_on:
       - db
