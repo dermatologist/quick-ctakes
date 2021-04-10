@@ -41,11 +41,13 @@ mvn clean package -DskipTests
 
 ```
 ### STEP 4: Dockarize it
-See the docker folder for details
-A sample docker-compose is also provided. (**Add UMLS KEY HERE**)
+* See the docker folder for details
+* A sample docker-compose is also provided. (**Add UMLS KEY HERE**)
 
 ### STEP 5: Use as below
+```
 curl -X POST -H "Content-Type: text/plain" --data "this is hypertension and diabetes" 127.0.0.1:8080/analyze
+```
 
 ## More about Quarkus
 
