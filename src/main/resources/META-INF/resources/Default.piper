@@ -1,7 +1,7 @@
 // https://github.com/GoTeamEpsilon/ctakes-rest-service/tree/master/ctakes-web-rest/src/main/resources/pipers
 add SimpleSegmentAnnotator
+add SentenceDetector
 add TokenizerAnnotatorPTB
-add org.apache.ctakes.drugner.ae.DrugMentionAnnotator
 add ContextDependentTokenizerAnnotator
 addDescription POSTagger
 add Chunker
