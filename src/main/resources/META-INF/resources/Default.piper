@@ -1,7 +1,7 @@
 // Commands and parameters to create a default plaintext document processing pipeline with UMLS lookup
 
 // set the thread count
-threads 3
+// threads 3
 
 // Load a simple token processing pipeline from another pipeline file
 // load pipers/TsDefaultTokenizerPipeline
@@ -24,7 +24,7 @@ addDescription adjuster.ChunkAdjuster NP,PP,NP 2
 //  Commands and parameters to create a default dictionary lookup sub-pipeline.  This is not a full pipeline.
 
 // path to the xml file containing information for dictionary lookup configuration.
-cli LookupXml=l
+// cli LookupXml=l
 // umls credentials
 // cli umlsUser=user
 // cli umlsPass=pass
