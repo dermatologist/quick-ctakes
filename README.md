@@ -42,6 +42,9 @@ mvn clean package -DskipTests
 ```
 ### STEP 4: Dockarize it
 * See the docker folder for details
+```
+docker build -f src/main/docker/Dockerfile.jvm -t <docker-user/container-name:tag .
+```
 * A sample docker-compose is also provided. (**Add UMLS KEY HERE**)
 
 ### STEP 5: Use as below
