@@ -26,6 +26,7 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
 RUN microdnf install openssl curl ca-certificates ${JAVA_PACKAGE} \
     && microdnf update \
     && microdnf clean all \
+    && mkdir /config \
     && mkdir /deployments \
     && chown 1001 /deployments \
     && chmod "g+rwX" /deployments \

@@ -38,21 +38,21 @@ public class CtakesResource {
     @PostConstruct
     public void init() {
         writeResources();
-        _pipelineRunners.put(DEFAULT_PIPELINE, new PipelineRunner("/tmp/Default.piper"));
+        _pipelineRunners.put(DEFAULT_PIPELINE, new PipelineRunner("/config/Default.piper"));
     }
 
     /**
      * The pipeline (Default.piper) file and the init method above
      * require the full/relative path. Accessing the path inside the container
-     * is tricky. Hence the resources are written to the tmp folder and read
+     * is tricky. Hence the resources are written to the /config folder and read
      * from there.
      */
     private void writeResources() {
-        InputStream in = getClass().getResourceAsStream(DEFAULT_PIPER_FILE); 
+        InputStream in = getClass().getResourceAsStream(DEFAULT_PIPER_FILE);
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         try {
             //piper = File.createTempFile("Default", ".piper");
-            File piper = new File("/tmp/Default.piper");
+            File piper = new File("/config/Default.piper");
             piper.delete();
             piper.createNewFile();
             BufferedWriter bw = new BufferedWriter(new FileWriter(piper));
@@ -64,10 +64,10 @@ public class CtakesResource {
             }
             bw.close();
             reader.close();
-            in = getClass().getResourceAsStream(DEFAULT_DICT_FILE); 
+            in = getClass().getResourceAsStream(DEFAULT_DICT_FILE);
             reader = new BufferedReader(new InputStreamReader(in));
             //File dictFile = File.createTempFile("customDictionary", ".xml");
-            File dictFile = new File("/tmp/customDictionary.xml");
+            File dictFile = new File("/config/customDictionary.xml");
             dictFile.delete();
             dictFile.createNewFile();
             bw = new BufferedWriter(new FileWriter(dictFile));
@@ -77,12 +77,12 @@ public class CtakesResource {
                 bw.newLine();
             }
             bw.close();
-            reader.close(); 
+            reader.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
- 
+
     }
 
     @POST

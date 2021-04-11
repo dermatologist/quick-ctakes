@@ -8,5 +8,5 @@ add Chunker
 addDescription adjuster.ChunkAdjuster NP,NP 1
 addDescription adjuster.ChunkAdjuster NP,PP,NP 2
 // https://github.com/apache/ctakes/blob/5f2a58afb5c9f6e8eec07dcab2c69bae08642e94/ctakes-web-rest/src/main/resources/pipers/DictionarySubPipe.piper
-cli LookupXml=/tmp/customDictionary.xml
-add DefaultJCasTermAnnotator LookupXml=/tmp/customDictionary.xml
+cli LookupXml=/config/customDictionary.xml
+add DefaultJCasTermAnnotator LookupXml=/config/customDictionary.xml
