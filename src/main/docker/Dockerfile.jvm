@@ -27,6 +27,9 @@ RUN microdnf install openssl curl ca-certificates ${JAVA_PACKAGE} \
     && microdnf update \
     && microdnf clean all \
     && mkdir /config \
+    && chown 1001 /config \
+    && chmod "g+rwX" /config \
+    && chown 1001:root /config \
     && mkdir /deployments \
     && chown 1001 /deployments \
     && chmod "g+rwX" /deployments \
