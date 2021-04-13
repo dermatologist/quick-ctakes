@@ -31,7 +31,7 @@ under the License.
                 -->
                 <property key="jdbcDriver" value="com.mysql.cj.jdbc.Driver"/>
                 <!-- CHANGE JDBC CONNECTION STRING -->
-                <property key="jdbcUrl" value="jdbc:mysql://db:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
+                <property key="jdbcUrl" value="jdbc:mysql://db:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;autoReconnect=true"/>
                 <property key="jdbcUser" value="root"/>
                 <property key="jdbcPass" value="pass"/>
                 <property key="rareWordTable" value="cui_terms"/>
@@ -50,7 +50,7 @@ under the License.
             <properties>
                 <property key="jdbcDriver" value="com.mysql.cj.jdbc.Driver"/>
                 <!-- CHANGE JDBC CONNECTION STRING -->
-                <property key="jdbcUrl" value="jdbc:mysql://db:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
+                <property key="jdbcUrl" value="jdbc:mysql://db:3306/umls?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;autoReconnect=true"/>
                 <property key="jdbcUser" value="root"/>
                 <property key="jdbcPass" value="pass"/>
                 <property key="tuiTable" value="tui"/>
