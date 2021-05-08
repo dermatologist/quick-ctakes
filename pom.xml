@@ -12,10 +12,10 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <quarkus-plugin.version>1.13.1.Final</quarkus-plugin.version>
+    <quarkus-plugin.version>1.3.1.Final</quarkus-plugin.version>
     <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
-    <quarkus.platform.version>1.13.1.Final</quarkus.platform.version>
+    <quarkus.platform.version>1.3.1.Final</quarkus.platform.version>
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
     <apache.ctakes.version>4.0.0.1</apache.ctakes.version>
     <spring.version>5.3.6</spring.version>
@@ -74,6 +74,31 @@
       <artifactId>kotlin-reflect</artifactId>
       <version>1.5.0</version>
     </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
+      <version>1.5.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.uima/uimaj-core -->
+    <dependency>
+      <groupId>org.apache.uima</groupId>
+      <artifactId>uimaj-core</artifactId>
+      <version>2.10.4</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.uima/uimaj-document-annotation -->
+    <dependency>
+      <groupId>org.apache.uima</groupId>
+      <artifactId>uimaj-document-annotation</artifactId>
+      <version>2.10.4</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.uima/uimafit-core -->
+    <dependency>
+      <groupId>org.apache.uima</groupId>
+      <artifactId>uimafit-core</artifactId>
+      <version>2.5.0</version>
+    </dependency>
+
+
     <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -150,7 +175,9 @@
         </configuration>
       </plugin>
     </plugins>
+
   </build>
+
   <profiles>
     <profile>
       <id>native</id>
@@ -178,6 +205,137 @@
               </execution>
             </executions>
           </plugin>
+          <plugin>
+            <groupId>org.apache.uima</groupId>
+            <artifactId>jcasgen-maven-plugin</artifactId>
+            <version>2.4.1</version> <!-- change this to the latest version -->
+            <executions>
+              <execution>
+                <goals>
+                  <goal>generate</goal>
+                </goals> <!-- this is the only goal -->
+                <!-- runs in phase process-resources by default -->
+                <configuration>
+
+                  <!-- REQUIRED -->
+                  <typeSystemIncludes>
+                    <!-- one or more ant-like file patterns 
+               identifying top level descriptors -->
+                    <typeSystemInclude>src/main/resources/MyTs.xml
+</typeSystemInclude>
+                  </typeSystemIncludes>
+
+                  <!-- OPTIONAL -->
+                  <!-- a sequence of ant-like file patterns 
+             to exclude from the above include list -->
+                  <typeSystemExcludes></typeSystemExcludes>
+
+                  <!-- OPTIONAL -->
+                  <!-- where the generated files go -->
+                  <!-- default value: 
+             ${project.build.directory}/generated-sources/jcasgen" -->
+                  <outputDirectory></outputDirectory>
+
+                  <!-- true or false, default = false -->
+                  <!-- if true, then although the complete merged type system 
+             will be created internally, only those types whose
+             definition is contained within this maven project will be
+             generated.  The others will be presumed to be 
+             available via other projects. -->
+                  <!-- OPTIONAL -->
+                  <limitToProject>false</limitToProject>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+
+          <plugin>
+            <groupId>org.apache.uima</groupId>
+            <artifactId>PearPackagingMavenPlugin</artifactId>
+
+            <!-- if version is omitted, then -->
+            <!-- version is inherited from parent's pluginManagement section -->
+            <!-- otherwise, include a version element here -->
+
+            <!-- says to load Maven extensions 
+         (such as packaging and type handlers) from this plugin -->
+            <extensions>true</extensions>
+            <executions>
+              <execution>
+                <phase>package</phase>
+                <!-- where you specify details of the thing being packaged -->
+                <configuration>
+
+                  <classpath>
+                    <!-- PEAR file component classpath settings -->
+                    $main_root/lib/sample.jar
+                  </classpath>
+
+                  <mainComponentDesc>
+                    <!-- PEAR file main component descriptor -->
+                    desc/${artifactId}.xml
+                  </mainComponentDesc>
+
+                  <componentId>
+                    <!-- PEAR file component ID -->
+                    ${artifactId}
+                  </componentId>
+
+                  <datapath>
+                    <!-- PEAR file UIMA datapath settings -->
+                    $main_root/resources
+                  </datapath>
+
+                </configuration>
+                <goals>
+                  <goal>package</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+              <!-- Copy the dependencies to the lib folder for the PEAR to copy -->
+              <execution>
+                <id>copy-dependencies</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>copy-dependencies</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${basedir}/lib</outputDirectory>
+                  <overWriteSnapshots>true</overWriteSnapshots>
+                  <includeScope>runtime</includeScope>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <!-- Clean the libraries after packaging -->
+              <execution>
+                <id>CleanLib</id>
+                <phase>clean</phase>
+                <configuration>
+                  <tasks>
+                    <delete quiet="true" failOnError="false">
+                      <fileset dir="lib" includes="**/*.jar" />
+                    </delete>
+                  </tasks>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
         </plugins>
       </build>
       <properties>

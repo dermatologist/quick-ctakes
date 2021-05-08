@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0
+http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <servers>
+    <server>
+      <username>beapen</username>
+      <password>${env.BINTRAY_KEY}</password>
+      <id>bintray-sdk</id>
+    </server>
+    <server>
+      <id>github</id>
+      <username>dermatologist</username>
+      <password>${env.GITHUB_KEY}</password>
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+      <!-- <properties>
+
+<archetypeRepository>http://mavenrepo.openmrs.org/nexus/content/repositories/public</archetypeRepository>
+
+<archetypeCatalog>http://mavenrepo.openmrs.org/nexus/content/repositories/public/archetype-catalog.xml</archetypeCatalog>
+      </properties> -->
+      <repositories>
+      	    <repository>
+               <id>central</id>
+               <url>https://repo.maven.apache.org/maven2/</url>
+            </repository>
+        <!-- <repository>
+          <id>openmrs-repo</id>
+          <name>OpenMRS Nexus Repository</name>
+          <url>https://mavenrepo.openmrs.org/nexus/content/repositories/public</url>
+        </repository>
+        <repository>
+          <id>openmrs-repo-thirdparty</id>
+          <name>OpenMRS Thirdparty Nexus Repository</name>
+          <url>https://mavenrepo.openmrs.org/nexus/content/repositories/thirdparty</url>
+        </repository>
+        <repository>
+          <id>openmrs-bintray-repo</id>
+          <name>OpeMRS Maven Bintray Repository</name>
+          <url>https://dl.bintray.com/openmrs/maven/</url>
+        </repository> -->
+        <repository>
+          <id>github</id>
+          <name>GitHub dermatologist Apache Maven Packages</name>
+          <url>https://maven.pkg.github.com/dermatologist/ckblib</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+        <id>central</id>
+        <name>Central Repository</name>
+        <url>https://repo.maven.apache.org/maven2</url>
+        <layout>default</layout>
+        </pluginRepository>
+        <!-- <pluginRepository>
+          <id>openmrs-repo</id>
+          <name>OpenMRS Nexus Repository</name>
+          <url>https://mavenrepo.openmrs.org/nexus/content/repositories/public</url>
+        </pluginRepository>
+        <pluginRepository>
+          <id>openmrs-bintray-repo</id>
+          <name>OpeMRS Maven Bintray Repository</name>
+          <url>https://dl.bintray.com/openmrs/maven/</url>
+        </pluginRepository> -->
+      </pluginRepositories>
+      <id>openmrs</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>openmrs</activeProfile>
+  </activeProfiles>
+  <pluginGroups>
+    <pluginGroup>org.openmrs.maven.plugins</pluginGroup>
+    <pluginGroup>org.apache.uima</pluginGroup>
+  </pluginGroups>
+</settings>
