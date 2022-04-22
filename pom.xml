@@ -18,7 +18,7 @@
     <quarkus.platform.version>1.2.1.Final</quarkus.platform.version>
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
     <apache.ctakes.version>4.0.0.1</apache.ctakes.version>
-    <spring.version>5.3.2</spring.version>
+    <spring.version>5.3.19</spring.version>
   </properties>
   <dependencyManagement>
     <dependencies>
